@@ -31,17 +31,20 @@
             this.kompany = new System.Windows.Forms.Panel();
             this.tabButton = new System.Windows.Forms.TabControl();
             this.company = new System.Windows.Forms.TabPage();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ButtonLoadCompani = new System.Windows.Forms.Button();
+            this.buttonSaveCompani = new System.Windows.Forms.Button();
+            this.dataGridCompani = new System.Windows.Forms.DataGridView();
             this.reis = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridReis = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonLoadReis = new System.Windows.Forms.Button();
+            this.buttonSaveReis = new System.Windows.Forms.Button();
             this.kompany.SuspendLayout();
             this.tabButton.SuspendLayout();
             this.company.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).BeginInit();
             this.reis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).BeginInit();
             this.SuspendLayout();
             // 
             // kompany
@@ -71,8 +74,9 @@
             // 
             // company
             // 
-            this.company.Controls.Add(this.buttonSave);
-            this.company.Controls.Add(this.dataGridView2);
+            this.company.Controls.Add(this.ButtonLoadCompani);
+            this.company.Controls.Add(this.buttonSaveCompani);
+            this.company.Controls.Add(this.dataGridCompani);
             this.company.Location = new System.Drawing.Point(4, 25);
             this.company.Name = "company";
             this.company.Padding = new System.Windows.Forms.Padding(3);
@@ -81,30 +85,42 @@
             this.company.Text = "Компания";
             this.company.UseVisualStyleBackColor = true;
             // 
-            // buttonSave
+            // ButtonLoadCompani
             // 
-            this.buttonSave.Location = new System.Drawing.Point(371, 470);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "button1";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.ButtonLoadCompani.Location = new System.Drawing.Point(726, 434);
+            this.ButtonLoadCompani.Name = "ButtonLoadCompani";
+            this.ButtonLoadCompani.Size = new System.Drawing.Size(114, 44);
+            this.ButtonLoadCompani.TabIndex = 3;
+            this.ButtonLoadCompani.Text = "Загрузить БД";
+            this.ButtonLoadCompani.UseVisualStyleBackColor = true;
+            this.ButtonLoadCompani.Click += new System.EventHandler(this.ButtonLoadCompani_Click);
             // 
-            // dataGridView2
+            // buttonSaveCompani
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(970, 425);
-            this.dataGridView2.TabIndex = 1;
+            this.buttonSaveCompani.Location = new System.Drawing.Point(846, 434);
+            this.buttonSaveCompani.Name = "buttonSaveCompani";
+            this.buttonSaveCompani.Size = new System.Drawing.Size(127, 44);
+            this.buttonSaveCompani.TabIndex = 2;
+            this.buttonSaveCompani.Text = "Сохранить БД";
+            this.buttonSaveCompani.UseVisualStyleBackColor = true;
+            this.buttonSaveCompani.Click += new System.EventHandler(this.buttonSaveCompani_Click);
+            // 
+            // dataGridCompani
+            // 
+            this.dataGridCompani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCompani.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridCompani.Location = new System.Drawing.Point(3, 3);
+            this.dataGridCompani.Name = "dataGridCompani";
+            this.dataGridCompani.RowHeadersWidth = 51;
+            this.dataGridCompani.RowTemplate.Height = 24;
+            this.dataGridCompani.Size = new System.Drawing.Size(970, 425);
+            this.dataGridCompani.TabIndex = 1;
             // 
             // reis
             // 
-            this.reis.Controls.Add(this.dataGridView1);
+            this.reis.Controls.Add(this.buttonLoadReis);
+            this.reis.Controls.Add(this.buttonSaveReis);
+            this.reis.Controls.Add(this.dataGridReis);
             this.reis.Location = new System.Drawing.Point(4, 25);
             this.reis.Name = "reis";
             this.reis.Padding = new System.Windows.Forms.Padding(3);
@@ -113,16 +129,16 @@
             this.reis.Text = "Рейс";
             this.reis.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridReis
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(970, 425);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReis.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridReis.Location = new System.Drawing.Point(3, 3);
+            this.dataGridReis.Name = "dataGridReis";
+            this.dataGridReis.RowHeadersWidth = 51;
+            this.dataGridReis.RowTemplate.Height = 24;
+            this.dataGridReis.Size = new System.Drawing.Size(970, 425);
+            this.dataGridReis.TabIndex = 0;
             // 
             // panel2
             // 
@@ -132,6 +148,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(984, 94);
             this.panel2.TabIndex = 0;
+            // 
+            // buttonLoadReis
+            // 
+            this.buttonLoadReis.Location = new System.Drawing.Point(721, 434);
+            this.buttonLoadReis.Name = "buttonLoadReis";
+            this.buttonLoadReis.Size = new System.Drawing.Size(114, 44);
+            this.buttonLoadReis.TabIndex = 5;
+            this.buttonLoadReis.Text = "Загрузить БД";
+            this.buttonLoadReis.UseVisualStyleBackColor = true;
+            this.buttonLoadReis.Click += new System.EventHandler(this.buttonLoadReis_Click);
+            // 
+            // buttonSaveReis
+            // 
+            this.buttonSaveReis.Location = new System.Drawing.Point(841, 434);
+            this.buttonSaveReis.Name = "buttonSaveReis";
+            this.buttonSaveReis.Size = new System.Drawing.Size(127, 44);
+            this.buttonSaveReis.TabIndex = 4;
+            this.buttonSaveReis.Text = "Сохранить БД";
+            this.buttonSaveReis.UseVisualStyleBackColor = true;
             // 
             // AddDataForm
             // 
@@ -145,9 +180,9 @@
             this.kompany.ResumeLayout(false);
             this.tabButton.ResumeLayout(false);
             this.company.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).EndInit();
             this.reis.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -159,8 +194,11 @@
         private System.Windows.Forms.TabControl tabButton;
         private System.Windows.Forms.TabPage company;
         private System.Windows.Forms.TabPage reis;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.DataGridView dataGridReis;
+        private System.Windows.Forms.DataGridView dataGridCompani;
+        private System.Windows.Forms.Button buttonSaveCompani;
+        private System.Windows.Forms.Button ButtonLoadCompani;
+        private System.Windows.Forms.Button buttonLoadReis;
+        private System.Windows.Forms.Button buttonSaveReis;
     }
 }

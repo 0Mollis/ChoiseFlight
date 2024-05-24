@@ -20,57 +20,41 @@ namespace ChoiseFlight
         {
             InitializeComponent();
 
-            GetComments();
-            GetComments2();
         }
 
-        private void GetComments()
+        public string server = "Server=localhost;Database=aeroport;Uid=root;pwd=root;charset=utf8;";
+        public MySqlConnection connection;
+        public MySqlCommand command;
+        public DataTable dataTable;
+
+        private void ButtonLoadCompani_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;database=aeroport;user=root;password=root");
-
-            string query = "SELECT * FROM reis";
-
-            using (MySqlDataAdapter adpt = new MySqlDataAdapter(query, connection))
-            {
-
-                DataSet dset = new DataSet();
-
-                adpt.Fill(dset);
-
-                dataGridView1.DataSource = dset.Tables[0];
-
-            }
-        }
-
-        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;database=aeroport;user=root;password=root");
-        DataSet dset = new DataSet();
-        MySqlConnection adap = new MySqlConnection();
-        DataTable dataTable = new DataTable();
-
-        private void GetComments2()
-        {
-            
+            connection = new MySqlConnection(server);
             connection.Open();
-            string query = "SELECT * FROM compani";
-
-            using (MySqlDataAdapter adpt = new MySqlDataAdapter(query, connection))
-            {
-
-                
-
-                adpt.Fill(dset);
-
-                dataGridView2.DataSource = dset.Tables[0];
-
-            }
+            string infoDB = "SELECT name, year, raiting FROM compani";
+            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
+            dataTable = new DataTable();
+            adpt.Fill(dataTable);
+            dataGridCompani.DataSource = dataTable;
+            connection.Close();
+        }
+        private void buttonSaveCompani_Click(object sender, EventArgs e)
+        {
+            connection.Open();
+            //MySqlDataAdapter.Update(dataSet); проблема что-то с dataSet
             connection.Close();
         }
 
-
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonLoadReis_Click(object sender, EventArgs e)
         {
-            
-            MessageBox.Show("SAVED");
+            connection = new MySqlConnection(server);
+            connection.Open();
+            string infoDB = "SELECT №, Город_вылета, Город_прилёта, Время_вылета, Время_прилёта FROM reis";//Может из-за русских названий MySql.Data.MySqlClient.MySqlException: "Unknown column 'Город_вылета' in 'field list'"
+            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
+            dataTable = new DataTable();
+            adpt.Fill(dataTable);
+            dataGridReis.DataSource = dataTable;
+            connection.Close();
         }
     }
 }
