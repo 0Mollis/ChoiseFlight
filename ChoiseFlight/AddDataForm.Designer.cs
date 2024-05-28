@@ -40,6 +40,16 @@
             this.dataGridReis = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.NameCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YearCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReitingCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumReis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SityFly = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SityFall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeFly = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeFall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kompany.SuspendLayout();
             this.tabButton.SuspendLayout();
             this.company.SuspendLayout();
@@ -57,7 +67,7 @@
             this.kompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kompany.Location = new System.Drawing.Point(0, 0);
             this.kompany.Name = "kompany";
-            this.kompany.Size = new System.Drawing.Size(984, 660);
+            this.kompany.Size = new System.Drawing.Size(984, 608);
             this.kompany.TabIndex = 1;
             // 
             // tabButton
@@ -71,25 +81,26 @@
             this.tabButton.Margin = new System.Windows.Forms.Padding(0);
             this.tabButton.Name = "tabButton";
             this.tabButton.SelectedIndex = 0;
-            this.tabButton.Size = new System.Drawing.Size(984, 566);
+            this.tabButton.Size = new System.Drawing.Size(984, 514);
             this.tabButton.TabIndex = 1;
             // 
             // company
             // 
+            this.company.Controls.Add(this.button1);
             this.company.Controls.Add(this.ButtonLoadCompani);
             this.company.Controls.Add(this.buttonSaveCompani);
             this.company.Controls.Add(this.dataGridCompani);
             this.company.Location = new System.Drawing.Point(4, 25);
             this.company.Name = "company";
             this.company.Padding = new System.Windows.Forms.Padding(3);
-            this.company.Size = new System.Drawing.Size(976, 537);
+            this.company.Size = new System.Drawing.Size(976, 485);
             this.company.TabIndex = 0;
             this.company.Text = "Компания";
             this.company.UseVisualStyleBackColor = true;
             // 
             // ButtonLoadCompani
             // 
-            this.ButtonLoadCompani.Location = new System.Drawing.Point(726, 434);
+            this.ButtonLoadCompani.Location = new System.Drawing.Point(632, 434);
             this.ButtonLoadCompani.Name = "ButtonLoadCompani";
             this.ButtonLoadCompani.Size = new System.Drawing.Size(114, 44);
             this.ButtonLoadCompani.TabIndex = 3;
@@ -99,7 +110,7 @@
             // 
             // buttonSaveCompani
             // 
-            this.buttonSaveCompani.Location = new System.Drawing.Point(846, 434);
+            this.buttonSaveCompani.Location = new System.Drawing.Point(752, 434);
             this.buttonSaveCompani.Name = "buttonSaveCompani";
             this.buttonSaveCompani.Size = new System.Drawing.Size(127, 44);
             this.buttonSaveCompani.TabIndex = 2;
@@ -110,6 +121,10 @@
             // dataGridCompani
             // 
             this.dataGridCompani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCompani.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameCompani,
+            this.YearCompani,
+            this.ReitingCompani});
             this.dataGridCompani.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridCompani.Location = new System.Drawing.Point(3, 3);
             this.dataGridCompani.Name = "dataGridCompani";
@@ -120,20 +135,21 @@
             // 
             // reis
             // 
+            this.reis.Controls.Add(this.button2);
             this.reis.Controls.Add(this.buttonLoadReis);
             this.reis.Controls.Add(this.buttonSaveReis);
             this.reis.Controls.Add(this.dataGridReis);
             this.reis.Location = new System.Drawing.Point(4, 25);
             this.reis.Name = "reis";
             this.reis.Padding = new System.Windows.Forms.Padding(3);
-            this.reis.Size = new System.Drawing.Size(976, 537);
+            this.reis.Size = new System.Drawing.Size(976, 485);
             this.reis.TabIndex = 1;
             this.reis.Text = "Рейс";
             this.reis.UseVisualStyleBackColor = true;
             // 
             // buttonLoadReis
             // 
-            this.buttonLoadReis.Location = new System.Drawing.Point(726, 434);
+            this.buttonLoadReis.Location = new System.Drawing.Point(632, 435);
             this.buttonLoadReis.Name = "buttonLoadReis";
             this.buttonLoadReis.Size = new System.Drawing.Size(114, 44);
             this.buttonLoadReis.TabIndex = 5;
@@ -143,7 +159,7 @@
             // 
             // buttonSaveReis
             // 
-            this.buttonSaveReis.Location = new System.Drawing.Point(846, 434);
+            this.buttonSaveReis.Location = new System.Drawing.Point(752, 435);
             this.buttonSaveReis.Name = "buttonSaveReis";
             this.buttonSaveReis.Size = new System.Drawing.Size(127, 44);
             this.buttonSaveReis.TabIndex = 4;
@@ -153,6 +169,12 @@
             // dataGridReis
             // 
             this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumReis,
+            this.SityFly,
+            this.SityFall,
+            this.TimeFly,
+            this.TimeFall});
             this.dataGridReis.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridReis.Location = new System.Drawing.Point(3, 3);
             this.dataGridReis.Name = "dataGridReis";
@@ -182,11 +204,87 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Добавление данных";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(885, 434);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 44);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(885, 434);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 44);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Удалить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // NameCompani
+            // 
+            this.NameCompani.HeaderText = "Название";
+            this.NameCompani.MinimumWidth = 6;
+            this.NameCompani.Name = "NameCompani";
+            this.NameCompani.Width = 125;
+            // 
+            // YearCompani
+            // 
+            this.YearCompani.HeaderText = "Год основания";
+            this.YearCompani.MinimumWidth = 6;
+            this.YearCompani.Name = "YearCompani";
+            this.YearCompani.Width = 150;
+            // 
+            // ReitingCompani
+            // 
+            this.ReitingCompani.HeaderText = "Рейтинг компании";
+            this.ReitingCompani.MinimumWidth = 6;
+            this.ReitingCompani.Name = "ReitingCompani";
+            this.ReitingCompani.Width = 160;
+            // 
+            // NumReis
+            // 
+            this.NumReis.HeaderText = "Номер рейса";
+            this.NumReis.MinimumWidth = 6;
+            this.NumReis.Name = "NumReis";
+            this.NumReis.Width = 123;
+            // 
+            // SityFly
+            // 
+            this.SityFly.HeaderText = "Город вылета";
+            this.SityFly.MinimumWidth = 6;
+            this.SityFly.Name = "SityFly";
+            this.SityFly.Width = 150;
+            // 
+            // SityFall
+            // 
+            this.SityFall.HeaderText = "Город прилёта";
+            this.SityFall.MinimumWidth = 6;
+            this.SityFall.Name = "SityFall";
+            this.SityFall.Width = 150;
+            // 
+            // TimeFly
+            // 
+            this.TimeFly.HeaderText = "Время вылета";
+            this.TimeFly.MinimumWidth = 6;
+            this.TimeFly.Name = "TimeFly";
+            this.TimeFly.Width = 125;
+            // 
+            // TimeFall
+            // 
+            this.TimeFall.HeaderText = "Время прилёта";
+            this.TimeFall.MinimumWidth = 6;
+            this.TimeFall.Name = "TimeFall";
+            this.TimeFall.Width = 125;
+            // 
             // AddDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 660);
+            this.ClientSize = new System.Drawing.Size(984, 608);
             this.Controls.Add(this.kompany);
             this.Name = "AddDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -217,5 +315,15 @@
         private System.Windows.Forms.Button buttonLoadReis;
         private System.Windows.Forms.Button buttonSaveReis;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCompani;
+        private System.Windows.Forms.DataGridViewTextBoxColumn YearCompani;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReitingCompani;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumReis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SityFly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SityFall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFall;
     }
 }

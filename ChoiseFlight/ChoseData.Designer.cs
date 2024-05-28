@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxReis2 = new System.Windows.Forms.TextBox();
+            this.textBoxCompani2 = new System.Windows.Forms.TextBox();
+            this.dataGridReis = new System.Windows.Forms.DataGridView();
+            this.dataGridCompani = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridCompani = new System.Windows.Forms.DataGridView();
-            this.dataGridReis = new System.Windows.Forms.DataGridView();
-            this.textBoxCompani2 = new System.Windows.Forms.TextBox();
-            this.textBoxReis2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(51)))), ((int)(((byte)(72)))));
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.textBoxReis2);
             this.panel1.Controls.Add(this.textBoxCompani2);
             this.panel1.Controls.Add(this.dataGridReis);
@@ -59,9 +59,75 @@
             this.panel1.Size = new System.Drawing.Size(930, 662);
             this.panel1.TabIndex = 1;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(776, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "№ Рейса";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(649, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Авиакомпании";
+            // 
+            // textBoxReis2
+            // 
+            this.textBoxReis2.Location = new System.Drawing.Point(697, 232);
+            this.textBoxReis2.Name = "textBoxReis2";
+            this.textBoxReis2.Size = new System.Drawing.Size(190, 22);
+            this.textBoxReis2.TabIndex = 4;
+            // 
+            // textBoxCompani2
+            // 
+            this.textBoxCompani2.Location = new System.Drawing.Point(697, 175);
+            this.textBoxCompani2.Name = "textBoxCompani2";
+            this.textBoxCompani2.Size = new System.Drawing.Size(190, 22);
+            this.textBoxCompani2.TabIndex = 3;
+            // 
+            // dataGridReis
+            // 
+            this.dataGridReis.AllowUserToAddRows = false;
+            this.dataGridReis.AllowUserToDeleteRows = false;
+            this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2});
+            this.dataGridReis.Location = new System.Drawing.Point(318, 127);
+            this.dataGridReis.Name = "dataGridReis";
+            this.dataGridReis.ReadOnly = true;
+            this.dataGridReis.RowHeadersWidth = 51;
+            this.dataGridReis.RowTemplate.Height = 24;
+            this.dataGridReis.Size = new System.Drawing.Size(253, 502);
+            this.dataGridReis.TabIndex = 2;
+            // 
+            // dataGridCompani
+            // 
+            this.dataGridCompani.AllowUserToAddRows = false;
+            this.dataGridCompani.AllowUserToDeleteRows = false;
+            this.dataGridCompani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCompani.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dataGridCompani.Location = new System.Drawing.Point(28, 127);
+            this.dataGridCompani.Name = "dataGridCompani";
+            this.dataGridCompani.ReadOnly = true;
+            this.dataGridCompani.RowHeadersWidth = 51;
+            this.dataGridCompani.RowTemplate.Height = 24;
+            this.dataGridCompani.Size = new System.Drawing.Size(253, 502);
+            this.dataGridCompani.TabIndex = 1;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(162)))), ((int)(((byte)(163)))));
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -80,59 +146,23 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Просмотр данных";
             // 
-            // dataGridCompani
+            // Column1
             // 
-            this.dataGridCompani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCompani.Location = new System.Drawing.Point(0, 160);
-            this.dataGridCompani.Name = "dataGridCompani";
-            this.dataGridCompani.RowHeadersWidth = 51;
-            this.dataGridCompani.RowTemplate.Height = 24;
-            this.dataGridCompani.Size = new System.Drawing.Size(240, 502);
-            this.dataGridCompani.TabIndex = 1;
+            this.Column1.DataPropertyName = "Column1";
+            this.Column1.HeaderText = "Авиакомпании";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
             // 
-            // dataGridReis
+            // Column2
             // 
-            this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridReis.Location = new System.Drawing.Point(258, 160);
-            this.dataGridReis.Name = "dataGridReis";
-            this.dataGridReis.RowHeadersWidth = 51;
-            this.dataGridReis.RowTemplate.Height = 24;
-            this.dataGridReis.Size = new System.Drawing.Size(240, 502);
-            this.dataGridReis.TabIndex = 2;
-            // 
-            // textBoxCompani2
-            // 
-            this.textBoxCompani2.Location = new System.Drawing.Point(697, 175);
-            this.textBoxCompani2.Name = "textBoxCompani2";
-            this.textBoxCompani2.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCompani2.TabIndex = 3;
-            // 
-            // textBoxReis2
-            // 
-            this.textBoxReis2.Location = new System.Drawing.Point(697, 309);
-            this.textBoxReis2.Name = "textBoxReis2";
-            this.textBoxReis2.Size = new System.Drawing.Size(100, 22);
-            this.textBoxReis2.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(57, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Авиакомпании";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(338, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "№ Рейса";
+            this.Column2.DataPropertyName = "Column2";
+            this.Column2.HeaderText = "Рейсы";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
             // 
             // ChoseData
             // 
@@ -145,10 +175,10 @@
             this.Text = "ChoseData";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,7 +192,9 @@
         private System.Windows.Forms.TextBox textBoxReis2;
         private System.Windows.Forms.TextBox textBoxCompani2;
         private System.Windows.Forms.DataGridView dataGridReis;
-        private System.Windows.Forms.DataGridView dataGridCompani;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridView dataGridCompani;
     }
 }

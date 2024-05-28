@@ -31,6 +31,10 @@ namespace ChoiseFlight
         {
             connection = new MySqlConnection(server);
             connection.Open();
+            dataGridCompani.AutoGenerateColumns=false;
+            NameCompani.DataPropertyName = "name";
+            YearCompani.DataPropertyName = "year";
+            ReitingCompani.DataPropertyName = "raiting";
             string infoDB = "SELECT name, year, raiting FROM compani";
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
@@ -49,12 +53,36 @@ namespace ChoiseFlight
         {
             connection = new MySqlConnection(server);
             connection.Open();
+            dataGridReis.AutoGenerateColumns=false;
+            NumReis.DataPropertyName = "№";
+            SityFly.DataPropertyName = "SityFly";
+            SityFall.DataPropertyName = "SityFall";
+            TimeFly.DataPropertyName = "TimeFly";
+            TimeFall.DataPropertyName = "TimeFall";
             string infoDB = "SELECT * FROM reis";//Может из-за русских названий MySql.Data.MySqlClient.MySqlException: "Unknown column 'Город_вылета' in 'field list'"     SELECT №, Город_вылета, Город_прилёта, Время_вылета, Время_прилёта FROM reis
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
             adpt.Fill(dataTable);
             dataGridReis.DataSource = dataTable;
             connection.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            iDelete();
+        }
+
+        private void iDelete()
+        {
+            foreach (DataGridViewRow item in this.dataGridCompani.SelectedRows)
+            {
+                dataGridCompani.Rows.RemoveAt(item.Index);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            iDelete();
         }
     }
 }
