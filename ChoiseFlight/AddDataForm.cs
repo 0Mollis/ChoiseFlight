@@ -41,7 +41,7 @@ namespace ChoiseFlight
         private void buttonSaveCompani_Click(object sender, EventArgs e)
         {
             connection.Open();
-            //MySqlDataAdapter.Update(dataSet); проблема что-то с dataSet
+            //MySqlDataAdapter.Update(dataSet); проблема что-то с dataSet наверное
             connection.Close();
         }
 
@@ -49,7 +49,7 @@ namespace ChoiseFlight
         {
             connection = new MySqlConnection(server);
             connection.Open();
-            string infoDB = "SELECT №, Город_вылета, Город_прилёта, Время_вылета, Время_прилёта FROM reis";//Может из-за русских названий MySql.Data.MySqlClient.MySqlException: "Unknown column 'Город_вылета' in 'field list'"
+            string infoDB = "SELECT * FROM reis";//Может из-за русских названий MySql.Data.MySqlClient.MySqlException: "Unknown column 'Город_вылета' in 'field list'"     SELECT №, Город_вылета, Город_прилёта, Время_вылета, Время_прилёта FROM reis
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
             adpt.Fill(dataTable);

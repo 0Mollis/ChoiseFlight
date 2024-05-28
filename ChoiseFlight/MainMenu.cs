@@ -53,7 +53,9 @@ namespace ChoiseFlight
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            TicketsOrder ticketsOrder = new TicketsOrder();
+            ticketsOrder.Show();
         }
 
         private void AddDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,6 +63,13 @@ namespace ChoiseFlight
             this.Hide();
             AddDataForm addDataForm = new AddDataForm();
             addDataForm.Show();
+        }
+
+        private void SeeDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChoseData choseData = new ChoseData();
+            choseData.Show();
         }
     }
 }

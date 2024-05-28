@@ -35,16 +35,18 @@
             this.buttonSaveCompani = new System.Windows.Forms.Button();
             this.dataGridCompani = new System.Windows.Forms.DataGridView();
             this.reis = new System.Windows.Forms.TabPage();
-            this.dataGridReis = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonLoadReis = new System.Windows.Forms.Button();
             this.buttonSaveReis = new System.Windows.Forms.Button();
+            this.dataGridReis = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.kompany.SuspendLayout();
             this.tabButton.SuspendLayout();
             this.company.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).BeginInit();
             this.reis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kompany
@@ -129,6 +131,25 @@
             this.reis.Text = "Рейс";
             this.reis.UseVisualStyleBackColor = true;
             // 
+            // buttonLoadReis
+            // 
+            this.buttonLoadReis.Location = new System.Drawing.Point(726, 434);
+            this.buttonLoadReis.Name = "buttonLoadReis";
+            this.buttonLoadReis.Size = new System.Drawing.Size(114, 44);
+            this.buttonLoadReis.TabIndex = 5;
+            this.buttonLoadReis.Text = "Загрузить БД";
+            this.buttonLoadReis.UseVisualStyleBackColor = true;
+            this.buttonLoadReis.Click += new System.EventHandler(this.buttonLoadReis_Click);
+            // 
+            // buttonSaveReis
+            // 
+            this.buttonSaveReis.Location = new System.Drawing.Point(846, 434);
+            this.buttonSaveReis.Name = "buttonSaveReis";
+            this.buttonSaveReis.Size = new System.Drawing.Size(127, 44);
+            this.buttonSaveReis.TabIndex = 4;
+            this.buttonSaveReis.Text = "Сохранить БД";
+            this.buttonSaveReis.UseVisualStyleBackColor = true;
+            // 
             // dataGridReis
             // 
             this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -143,30 +164,23 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(162)))), ((int)(((byte)(163)))));
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(984, 94);
             this.panel2.TabIndex = 0;
             // 
-            // buttonLoadReis
+            // label1
             // 
-            this.buttonLoadReis.Location = new System.Drawing.Point(721, 434);
-            this.buttonLoadReis.Name = "buttonLoadReis";
-            this.buttonLoadReis.Size = new System.Drawing.Size(114, 44);
-            this.buttonLoadReis.TabIndex = 5;
-            this.buttonLoadReis.Text = "Загрузить БД";
-            this.buttonLoadReis.UseVisualStyleBackColor = true;
-            this.buttonLoadReis.Click += new System.EventHandler(this.buttonLoadReis_Click);
-            // 
-            // buttonSaveReis
-            // 
-            this.buttonSaveReis.Location = new System.Drawing.Point(841, 434);
-            this.buttonSaveReis.Name = "buttonSaveReis";
-            this.buttonSaveReis.Size = new System.Drawing.Size(127, 44);
-            this.buttonSaveReis.TabIndex = 4;
-            this.buttonSaveReis.Text = "Сохранить БД";
-            this.buttonSaveReis.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(342, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(312, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Добавление данных";
             // 
             // AddDataForm
             // 
@@ -183,6 +197,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).EndInit();
             this.reis.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -200,5 +216,6 @@
         private System.Windows.Forms.Button ButtonLoadCompani;
         private System.Windows.Forms.Button buttonLoadReis;
         private System.Windows.Forms.Button buttonSaveReis;
+        private System.Windows.Forms.Label label1;
     }
 }
