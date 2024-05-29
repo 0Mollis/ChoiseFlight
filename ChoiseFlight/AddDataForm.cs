@@ -84,5 +84,22 @@ namespace ChoiseFlight
         {
             iDelete();
         }
+
+        private void iExit()
+        {
+            Application.Exit();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            iExit();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+        }
     }
 }

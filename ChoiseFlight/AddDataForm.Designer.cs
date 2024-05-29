@@ -31,20 +31,22 @@
             this.kompany = new System.Windows.Forms.Panel();
             this.tabButton = new System.Windows.Forms.TabControl();
             this.company = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.ButtonLoadCompani = new System.Windows.Forms.Button();
             this.buttonSaveCompani = new System.Windows.Forms.Button();
             this.dataGridCompani = new System.Windows.Forms.DataGridView();
+            this.NameCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YearCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReitingCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reis = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonLoadReis = new System.Windows.Forms.Button();
             this.buttonSaveReis = new System.Windows.Forms.Button();
             this.dataGridReis = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.NameCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YearCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReitingCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.NumReis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SityFly = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SityFall = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +69,7 @@
             this.kompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kompany.Location = new System.Drawing.Point(0, 0);
             this.kompany.Name = "kompany";
-            this.kompany.Size = new System.Drawing.Size(984, 608);
+            this.kompany.Size = new System.Drawing.Size(1002, 655);
             this.kompany.TabIndex = 1;
             // 
             // tabButton
@@ -75,13 +77,14 @@
             this.tabButton.Controls.Add(this.company);
             this.tabButton.Controls.Add(this.reis);
             this.tabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabButton.ItemSize = new System.Drawing.Size(71, 21);
             this.tabButton.Location = new System.Drawing.Point(0, 94);
             this.tabButton.Margin = new System.Windows.Forms.Padding(0);
             this.tabButton.Name = "tabButton";
             this.tabButton.SelectedIndex = 0;
-            this.tabButton.Size = new System.Drawing.Size(984, 514);
+            this.tabButton.Size = new System.Drawing.Size(1002, 561);
             this.tabButton.TabIndex = 1;
             // 
             // company
@@ -97,6 +100,16 @@
             this.company.TabIndex = 0;
             this.company.Text = "Компания";
             this.company.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(885, 434);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 44);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ButtonLoadCompani
             // 
@@ -133,6 +146,27 @@
             this.dataGridCompani.Size = new System.Drawing.Size(970, 425);
             this.dataGridCompani.TabIndex = 1;
             // 
+            // NameCompani
+            // 
+            this.NameCompani.HeaderText = "Название";
+            this.NameCompani.MinimumWidth = 6;
+            this.NameCompani.Name = "NameCompani";
+            this.NameCompani.Width = 150;
+            // 
+            // YearCompani
+            // 
+            this.YearCompani.HeaderText = "Год основания";
+            this.YearCompani.MinimumWidth = 6;
+            this.YearCompani.Name = "YearCompani";
+            this.YearCompani.Width = 150;
+            // 
+            // ReitingCompani
+            // 
+            this.ReitingCompani.HeaderText = "Рейтинг компании";
+            this.ReitingCompani.MinimumWidth = 6;
+            this.ReitingCompani.Name = "ReitingCompani";
+            this.ReitingCompani.Width = 160;
+            // 
             // reis
             // 
             this.reis.Controls.Add(this.button2);
@@ -142,14 +176,24 @@
             this.reis.Location = new System.Drawing.Point(4, 25);
             this.reis.Name = "reis";
             this.reis.Padding = new System.Windows.Forms.Padding(3);
-            this.reis.Size = new System.Drawing.Size(976, 485);
+            this.reis.Size = new System.Drawing.Size(994, 532);
             this.reis.TabIndex = 1;
             this.reis.Text = "Рейс";
             this.reis.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(885, 434);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 44);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Удалить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // buttonLoadReis
             // 
-            this.buttonLoadReis.Location = new System.Drawing.Point(632, 435);
+            this.buttonLoadReis.Location = new System.Drawing.Point(632, 434);
             this.buttonLoadReis.Name = "buttonLoadReis";
             this.buttonLoadReis.Size = new System.Drawing.Size(114, 44);
             this.buttonLoadReis.TabIndex = 5;
@@ -159,7 +203,7 @@
             // 
             // buttonSaveReis
             // 
-            this.buttonSaveReis.Location = new System.Drawing.Point(752, 435);
+            this.buttonSaveReis.Location = new System.Drawing.Point(752, 434);
             this.buttonSaveReis.Name = "buttonSaveReis";
             this.buttonSaveReis.Size = new System.Drawing.Size(127, 44);
             this.buttonSaveReis.TabIndex = 4;
@@ -180,17 +224,19 @@
             this.dataGridReis.Name = "dataGridReis";
             this.dataGridReis.RowHeadersWidth = 51;
             this.dataGridReis.RowTemplate.Height = 24;
-            this.dataGridReis.Size = new System.Drawing.Size(970, 425);
+            this.dataGridReis.Size = new System.Drawing.Size(988, 425);
             this.dataGridReis.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(162)))), ((int)(((byte)(163)))));
+            this.panel2.Controls.Add(this.buttonBack);
+            this.panel2.Controls.Add(this.ExitButton);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(984, 94);
+            this.panel2.Size = new System.Drawing.Size(1002, 94);
             this.panel2.TabIndex = 0;
             // 
             // label1
@@ -204,53 +250,42 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Добавление данных";
             // 
-            // button1
+            // ExitButton
             // 
-            this.button1.Location = new System.Drawing.Point(885, 434);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 44);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(964, 0);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(38, 38);
+            this.ExitButton.TabIndex = 2;
+            this.ExitButton.Text = "X";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // button2
+            // buttonBack
             // 
-            this.button2.Location = new System.Drawing.Point(885, 434);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 44);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // NameCompani
-            // 
-            this.NameCompani.HeaderText = "Название";
-            this.NameCompani.MinimumWidth = 6;
-            this.NameCompani.Name = "NameCompani";
-            this.NameCompani.Width = 125;
-            // 
-            // YearCompani
-            // 
-            this.YearCompani.HeaderText = "Год основания";
-            this.YearCompani.MinimumWidth = 6;
-            this.YearCompani.Name = "YearCompani";
-            this.YearCompani.Width = 150;
-            // 
-            // ReitingCompani
-            // 
-            this.ReitingCompani.HeaderText = "Рейтинг компании";
-            this.ReitingCompani.MinimumWidth = 6;
-            this.ReitingCompani.Name = "ReitingCompani";
-            this.ReitingCompani.Width = 160;
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBack.ForeColor = System.Drawing.Color.White;
+            this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(55, 55);
+            this.buttonBack.TabIndex = 7;
+            this.buttonBack.Text = "<";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // NumReis
             // 
             this.NumReis.HeaderText = "Номер рейса";
             this.NumReis.MinimumWidth = 6;
             this.NumReis.Name = "NumReis";
-            this.NumReis.Width = 123;
+            this.NumReis.Width = 125;
             // 
             // SityFly
             // 
@@ -286,6 +321,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 608);
             this.Controls.Add(this.kompany);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1002, 655);
+            this.MinimumSize = new System.Drawing.Size(1002, 655);
             this.Name = "AddDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddDataForm";
@@ -320,6 +358,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCompani;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearCompani;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReitingCompani;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumReis;
         private System.Windows.Forms.DataGridViewTextBoxColumn SityFly;
         private System.Windows.Forms.DataGridViewTextBoxColumn SityFall;

@@ -71,5 +71,15 @@ namespace ChoiseFlight
             ChoseData choseData = new ChoseData();
             choseData.Show();
         }
+
+        private void iExit()
+        {
+            Application.Exit();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            iExit();
+        }
     }
 }

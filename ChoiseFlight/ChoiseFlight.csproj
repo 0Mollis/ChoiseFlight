@@ -104,6 +104,7 @@
     <Compile Include="AddDataForm.Designer.cs">
       <DependentUpon>AddDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buffer.cs" />
     <Compile Include="ChoseData.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -31,6 +31,7 @@ namespace ChoiseFlight
         {
             connection = new MySqlConnection(server);
             connection.Open();
+            Column1.DataPropertyName = "name";
             string infoDB = "SELECT name FROM compani";
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
@@ -43,6 +44,7 @@ namespace ChoiseFlight
         {
             connection = new MySqlConnection(server);
             connection.Open();
+            Column2.DataPropertyName = "№";
             string infoDB = "SELECT № FROM reis";
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
@@ -50,5 +52,40 @@ namespace ChoiseFlight
             dataGridReis.DataSource = dataTable;
             connection.Close();
         }
+
+        private void iExit()
+        {
+            Application.Exit();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            iExit();
+        }
+
+        private void dataGridCompani_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxCompani2.Text = dataGridCompani.CurrentRow.Cells[0].Value.ToString(); 
+            
+        }
+
+        private void dataGridReis_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxReis2.Text = dataGridReis.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Buffer.CompaniTxtBox = textBoxCompani2.Text;
+            Buffer.ReisTxtBox = textBoxReis2.Text;
+        }
+
     }
 }
