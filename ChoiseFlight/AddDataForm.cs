@@ -19,7 +19,7 @@ namespace ChoiseFlight
         public AddDataForm()
         {
             InitializeComponent();
-
+            connection = new MySqlConnection(server);
         }
 
         public string server = "Server=localhost;Database=aeroport;Uid=root;pwd=root;charset=utf8;";
@@ -29,23 +29,44 @@ namespace ChoiseFlight
 
         private void ButtonLoadCompani_Click(object sender, EventArgs e)
         {
-            connection = new MySqlConnection(server);
             connection.Open();
             dataGridCompani.AutoGenerateColumns=false;
+            IDcol.DataPropertyName = "id";
             NameCompani.DataPropertyName = "name";
             YearCompani.DataPropertyName = "year";
             ReitingCompani.DataPropertyName = "raiting";
-            string infoDB = "SELECT name, year, raiting FROM compani";
+            string infoDB = "SELECT id, name, year, raiting FROM compani";
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
             adpt.Fill(dataTable);
             dataGridCompani.DataSource = dataTable;
+            rowcount = dataGridCompani.Rows.Count;
             connection.Close();
         }
+        int rowcount = 0;
         private void buttonSaveCompani_Click(object sender, EventArgs e)
-        {
+        {//============================================================================================
+            connection = new MySqlConnection(server);
             connection.Open();
-            //MySqlDataAdapter.Update(dataSet); проблема что-то с dataSet наверное
+            string infoDB = "SELECT id, name, year, raiting FROM compani";
+
+            MySqlDataAdapter adapter2 = new MySqlDataAdapter(infoDB,connection);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter2);
+
+            DataTable dataTable = new DataTable();
+            //dataTable.Load(dataGridCompani.DataSource);
+            
+            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
+
+
+            int coulmneeded = 0;
+
+            MySqlCommand command = new MySqlCommand("INSERT INTO `compani` (`name`, `year`, `raiting`) VALUE (@n, @year, @raiting);", connection);
+            command.Parameters.Add("@year", MySqlDbType.VarChar).Value = textBox2.Text;
+            command.Parameters.Add("@raiting", MySqlDbType.VarChar).Value = textBox3.Text;
+            command.Parameters.Add("@n", MySqlDbType.VarChar).Value = textBox1.Text;
+            command.ExecuteNonQuery(); 
+
             connection.Close();
         }
 
@@ -59,7 +80,7 @@ namespace ChoiseFlight
             SityFall.DataPropertyName = "SityFall";
             TimeFly.DataPropertyName = "TimeFly";
             TimeFall.DataPropertyName = "TimeFall";
-            string infoDB = "SELECT * FROM reis";//Может из-за русских названий MySql.Data.MySqlClient.MySqlException: "Unknown column 'Город_вылета' in 'field list'"     SELECT №, Город_вылета, Город_прилёта, Время_вылета, Время_прилёта FROM reis
+            string infoDB = "SELECT * FROM reis";
             MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
             dataTable = new DataTable();
             adpt.Fill(dataTable);
@@ -69,15 +90,24 @@ namespace ChoiseFlight
 
         private void button1_Click(object sender, EventArgs e)
         {
-            iDelete();
+            iDelete();//DELETE FROM `compani` WHERE `compani`.`id` = 2
         }
 
         private void iDelete()
         {
-            foreach (DataGridViewRow item in this.dataGridCompani.SelectedRows)
-            {
-                dataGridCompani.Rows.RemoveAt(item.Index);
-            }
+            connection.Open();
+            MySqlCommand command = new MySqlCommand("DELETE FROM `compani` WHERE `compani`.`id` = @id", connection);
+            command.Parameters.Add("@id", MySqlDbType.Int16).Value = GetId();
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            dataGridCompani.Rows.RemoveAt(dataGridCompani.SelectedRows[0].Index);
+
+        }
+
+        private object GetId()
+        {
+            return dataGridCompani.SelectedRows[0].Cells[0].Value;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,11 +125,52 @@ namespace ChoiseFlight
             iExit();
         }
 
+        public static DataTable GetDTfromDGV(DataGridView dgv, int rowcount = 1, int colcount = 3)//row count used when rowpost paint used, default is zero...colcount is the coulmns needed to convert , default is 0
+        {
+            DataTable dt = new DataTable();
+            int coulmneeded = dgv.Columns.Count - (dgv.Columns.Count - colcount);
+
+            for (int ik = 0; ik < coulmneeded; ik++)
+            {
+                dt.Columns.Add(dgv.Columns[ik].HeaderText);
+            }
+
+
+
+            for (int i = 0; i < dgv.Rows.Count - rowcount; i++)
+            {
+                var dr = dt.NewRow();
+                for (int j = 0; j < coulmneeded; j++)
+                {
+                    dr[j] = dgv.Rows[i].Cells[j].Value;
+                }
+                dt.Rows.Add(dr);
+            }
+
+
+            return dt;
+        }
+
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
+        }
+
+        private void dataGridReis_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonSaveReis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridCompani_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
