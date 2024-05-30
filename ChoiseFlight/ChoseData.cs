@@ -85,6 +85,7 @@ namespace ChoiseFlight
         {
             Buffer.CompaniTxtBox = textBoxCompani2.Text;
             Buffer.ReisTxtBox = textBoxReis2.Text;
+            MessageBox.Show("Сохранено","", MessageBoxButtons.OK);
         }
 
     }

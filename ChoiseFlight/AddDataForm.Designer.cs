@@ -31,15 +31,36 @@
             this.kompany = new System.Windows.Forms.Panel();
             this.tabButton = new System.Windows.Forms.TabControl();
             this.company = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonCompaniDelete = new System.Windows.Forms.Button();
             this.ButtonLoadCompani = new System.Windows.Forms.Button();
             this.buttonSaveCompani = new System.Windows.Forms.Button();
             this.dataGridCompani = new System.Windows.Forms.DataGridView();
+            this.IDcol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YearCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReitingCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reis = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxTfall = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxTfly = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxSfall = new System.Windows.Forms.TextBox();
+            this.textBoxSFly = new System.Windows.Forms.TextBox();
+            this.textBoxNumR = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonLoadReis = new System.Windows.Forms.Button();
             this.buttonSaveReis = new System.Windows.Forms.Button();
             this.dataGridReis = new System.Windows.Forms.DataGridView();
+            this.IDReis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumReis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SityFly = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SityFall = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,14 +70,6 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.IDcol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YearCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReitingCompani = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kompany.SuspendLayout();
             this.tabButton.SuspendLayout();
             this.company.SuspendLayout();
@@ -94,11 +107,13 @@
             // 
             // company
             // 
+            this.company.Controls.Add(this.label4);
+            this.company.Controls.Add(this.label3);
             this.company.Controls.Add(this.label2);
             this.company.Controls.Add(this.textBox3);
             this.company.Controls.Add(this.textBox2);
             this.company.Controls.Add(this.textBox1);
-            this.company.Controls.Add(this.button1);
+            this.company.Controls.Add(this.buttonCompaniDelete);
             this.company.Controls.Add(this.ButtonLoadCompani);
             this.company.Controls.Add(this.buttonSaveCompani);
             this.company.Controls.Add(this.dataGridCompani);
@@ -110,19 +125,70 @@
             this.company.Text = "Компания";
             this.company.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(903, 434);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 44);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(343, 431);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 18);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Рейтинг компании";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(174, 431);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 18);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Год основания";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 431);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Название";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Location = new System.Drawing.Point(346, 452);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(163, 24);
+            this.textBox3.TabIndex = 7;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(177, 452);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(163, 24);
+            this.textBox2.TabIndex = 6;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(8, 452);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(163, 24);
+            this.textBox1.TabIndex = 5;
+            // 
+            // buttonCompaniDelete
+            // 
+            this.buttonCompaniDelete.Location = new System.Drawing.Point(900, 482);
+            this.buttonCompaniDelete.Name = "buttonCompaniDelete";
+            this.buttonCompaniDelete.Size = new System.Drawing.Size(88, 44);
+            this.buttonCompaniDelete.TabIndex = 4;
+            this.buttonCompaniDelete.Text = "Удалить";
+            this.buttonCompaniDelete.UseVisualStyleBackColor = true;
+            this.buttonCompaniDelete.Click += new System.EventHandler(this.buttonCompaniDelete_Click);
             // 
             // ButtonLoadCompani
             // 
-            this.ButtonLoadCompani.Location = new System.Drawing.Point(625, 434);
+            this.ButtonLoadCompani.Location = new System.Drawing.Point(622, 482);
             this.ButtonLoadCompani.Name = "ButtonLoadCompani";
             this.ButtonLoadCompani.Size = new System.Drawing.Size(125, 44);
             this.ButtonLoadCompani.TabIndex = 3;
@@ -132,7 +198,7 @@
             // 
             // buttonSaveCompani
             // 
-            this.buttonSaveCompani.Location = new System.Drawing.Point(756, 434);
+            this.buttonSaveCompani.Location = new System.Drawing.Point(753, 482);
             this.buttonSaveCompani.Name = "buttonSaveCompani";
             this.buttonSaveCompani.Size = new System.Drawing.Size(141, 44);
             this.buttonSaveCompani.TabIndex = 2;
@@ -155,10 +221,47 @@
             this.dataGridCompani.RowTemplate.Height = 24;
             this.dataGridCompani.Size = new System.Drawing.Size(988, 425);
             this.dataGridCompani.TabIndex = 1;
-            this.dataGridCompani.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCompani_CellContentClick);
+            // 
+            // IDcol
+            // 
+            this.IDcol.HeaderText = "id";
+            this.IDcol.MinimumWidth = 6;
+            this.IDcol.Name = "IDcol";
+            this.IDcol.Width = 125;
+            // 
+            // NameCompani
+            // 
+            this.NameCompani.HeaderText = "Название";
+            this.NameCompani.MinimumWidth = 6;
+            this.NameCompani.Name = "NameCompani";
+            this.NameCompani.Width = 150;
+            // 
+            // YearCompani
+            // 
+            this.YearCompani.HeaderText = "Год основания";
+            this.YearCompani.MinimumWidth = 6;
+            this.YearCompani.Name = "YearCompani";
+            this.YearCompani.Width = 150;
+            // 
+            // ReitingCompani
+            // 
+            this.ReitingCompani.HeaderText = "Рейтинг компании";
+            this.ReitingCompani.MinimumWidth = 6;
+            this.ReitingCompani.Name = "ReitingCompani";
+            this.ReitingCompani.Width = 160;
             // 
             // reis
             // 
+            this.reis.Controls.Add(this.label9);
+            this.reis.Controls.Add(this.textBoxTfall);
+            this.reis.Controls.Add(this.label8);
+            this.reis.Controls.Add(this.textBoxTfly);
+            this.reis.Controls.Add(this.label5);
+            this.reis.Controls.Add(this.label6);
+            this.reis.Controls.Add(this.label7);
+            this.reis.Controls.Add(this.textBoxSfall);
+            this.reis.Controls.Add(this.textBoxSFly);
+            this.reis.Controls.Add(this.textBoxNumR);
             this.reis.Controls.Add(this.button2);
             this.reis.Controls.Add(this.buttonLoadReis);
             this.reis.Controls.Add(this.buttonSaveReis);
@@ -171,9 +274,94 @@
             this.reis.Text = "Рейс";
             this.reis.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(729, 432);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(113, 18);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Время прилёта";
+            // 
+            // textBoxTfall
+            // 
+            this.textBoxTfall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTfall.Location = new System.Drawing.Point(732, 453);
+            this.textBoxTfall.Name = "textBoxTfall";
+            this.textBoxTfall.Size = new System.Drawing.Size(139, 24);
+            this.textBoxTfall.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(584, 432);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 18);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Время вылета";
+            // 
+            // textBoxTfly
+            // 
+            this.textBoxTfly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTfly.Location = new System.Drawing.Point(587, 453);
+            this.textBoxTfly.Name = "textBoxTfly";
+            this.textBoxTfly.Size = new System.Drawing.Size(139, 24);
+            this.textBoxTfly.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(379, 432);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 18);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Город прилёта";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(174, 432);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 18);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Город вылета";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 432);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 18);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Номер рейса";
+            // 
+            // textBoxSfall
+            // 
+            this.textBoxSfall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSfall.Location = new System.Drawing.Point(382, 453);
+            this.textBoxSfall.Name = "textBoxSfall";
+            this.textBoxSfall.Size = new System.Drawing.Size(199, 24);
+            this.textBoxSfall.TabIndex = 13;
+            // 
+            // textBoxSFly
+            // 
+            this.textBoxSFly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSFly.Location = new System.Drawing.Point(177, 453);
+            this.textBoxSFly.Name = "textBoxSFly";
+            this.textBoxSFly.Size = new System.Drawing.Size(199, 24);
+            this.textBoxSFly.TabIndex = 12;
+            // 
+            // textBoxNumR
+            // 
+            this.textBoxNumR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNumR.Location = new System.Drawing.Point(8, 453);
+            this.textBoxNumR.Name = "textBoxNumR";
+            this.textBoxNumR.Size = new System.Drawing.Size(163, 24);
+            this.textBoxNumR.TabIndex = 11;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(903, 434);
+            this.button2.Location = new System.Drawing.Point(900, 482);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 44);
             this.button2.TabIndex = 6;
@@ -183,7 +371,7 @@
             // 
             // buttonLoadReis
             // 
-            this.buttonLoadReis.Location = new System.Drawing.Point(625, 434);
+            this.buttonLoadReis.Location = new System.Drawing.Point(622, 482);
             this.buttonLoadReis.Name = "buttonLoadReis";
             this.buttonLoadReis.Size = new System.Drawing.Size(125, 44);
             this.buttonLoadReis.TabIndex = 5;
@@ -193,7 +381,7 @@
             // 
             // buttonSaveReis
             // 
-            this.buttonSaveReis.Location = new System.Drawing.Point(756, 434);
+            this.buttonSaveReis.Location = new System.Drawing.Point(753, 482);
             this.buttonSaveReis.Name = "buttonSaveReis";
             this.buttonSaveReis.Size = new System.Drawing.Size(141, 44);
             this.buttonSaveReis.TabIndex = 4;
@@ -205,6 +393,7 @@
             // 
             this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridReis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDReis,
             this.NumReis,
             this.SityFly,
             this.SityFall,
@@ -217,7 +406,13 @@
             this.dataGridReis.RowTemplate.Height = 24;
             this.dataGridReis.Size = new System.Drawing.Size(988, 425);
             this.dataGridReis.TabIndex = 0;
-            this.dataGridReis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReis_CellContentClick);
+            // 
+            // IDReis
+            // 
+            this.IDReis.HeaderText = "id";
+            this.IDReis.MinimumWidth = 6;
+            this.IDReis.Name = "IDReis";
+            this.IDReis.Width = 70;
             // 
             // NumReis
             // 
@@ -231,28 +426,28 @@
             this.SityFly.HeaderText = "Город вылета";
             this.SityFly.MinimumWidth = 6;
             this.SityFly.Name = "SityFly";
-            this.SityFly.Width = 150;
+            this.SityFly.Width = 125;
             // 
             // SityFall
             // 
             this.SityFall.HeaderText = "Город прилёта";
             this.SityFall.MinimumWidth = 6;
             this.SityFall.Name = "SityFall";
-            this.SityFall.Width = 150;
+            this.SityFall.Width = 125;
             // 
             // TimeFly
             // 
             this.TimeFly.HeaderText = "Время вылета";
             this.TimeFly.MinimumWidth = 6;
             this.TimeFly.Name = "TimeFly";
-            this.TimeFly.Width = 125;
+            this.TimeFly.Width = 121;
             // 
             // TimeFall
             // 
             this.TimeFall.HeaderText = "Время прилёта";
             this.TimeFall.MinimumWidth = 6;
             this.TimeFall.Name = "TimeFall";
-            this.TimeFall.Width = 125;
+            this.TimeFall.Width = 121;
             // 
             // panel2
             // 
@@ -307,64 +502,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Добавление данных";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 465);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 24);
-            this.textBox1.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(163, 465);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(131, 24);
-            this.textBox2.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(314, 465);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(131, 24);
-            this.textBox3.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 443);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 18);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "label2";
-            // 
-            // IDcol
-            // 
-            this.IDcol.HeaderText = "id";
-            this.IDcol.MinimumWidth = 6;
-            this.IDcol.Name = "IDcol";
-            this.IDcol.Width = 125;
-            // 
-            // NameCompani
-            // 
-            this.NameCompani.HeaderText = "Название";
-            this.NameCompani.MinimumWidth = 6;
-            this.NameCompani.Name = "NameCompani";
-            this.NameCompani.Width = 150;
-            // 
-            // YearCompani
-            // 
-            this.YearCompani.HeaderText = "Год основания";
-            this.YearCompani.MinimumWidth = 6;
-            this.YearCompani.Name = "YearCompani";
-            this.YearCompani.Width = 150;
-            // 
-            // ReitingCompani
-            // 
-            this.ReitingCompani.HeaderText = "Рейтинг компании";
-            this.ReitingCompani.MinimumWidth = 6;
-            this.ReitingCompani.Name = "ReitingCompani";
-            this.ReitingCompani.Width = 160;
-            // 
             // AddDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -383,6 +520,7 @@
             this.company.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompani)).EndInit();
             this.reis.ResumeLayout(false);
+            this.reis.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReis)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -404,15 +542,10 @@
         private System.Windows.Forms.Button buttonLoadReis;
         private System.Windows.Forms.Button buttonSaveReis;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCompaniDelete;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumReis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SityFly;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SityFall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFly;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFall;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
@@ -421,5 +554,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCompani;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearCompani;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReitingCompani;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxSfall;
+        private System.Windows.Forms.TextBox textBoxSFly;
+        private System.Windows.Forms.TextBox textBoxNumR;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxTfall;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxTfly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDReis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumReis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SityFly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SityFall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeFall;
     }
 }

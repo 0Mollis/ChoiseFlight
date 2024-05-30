@@ -166,6 +166,7 @@ namespace ChoiseFlight
             this.Close();
             MainMenu mainMenu = new MainMenu(); 
             mainMenu.Show();
+            MessageBox.Show("Оплачено :)", "", MessageBoxButtons.OK);
         }
     }
 }

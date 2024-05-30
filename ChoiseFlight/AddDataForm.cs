@@ -29,6 +29,11 @@ namespace ChoiseFlight
 
         private void ButtonLoadCompani_Click(object sender, EventArgs e)
         {
+            GetCompaniDB();
+        }
+
+        public void GetCompaniDB()
+        {
             connection.Open();
             dataGridCompani.AutoGenerateColumns=false;
             IDcol.DataPropertyName = "id";
@@ -40,26 +45,12 @@ namespace ChoiseFlight
             dataTable = new DataTable();
             adpt.Fill(dataTable);
             dataGridCompani.DataSource = dataTable;
-            rowcount = dataGridCompani.Rows.Count;
             connection.Close();
         }
-        int rowcount = 0;
+
         private void buttonSaveCompani_Click(object sender, EventArgs e)
-        {//============================================================================================
-            connection = new MySqlConnection(server);
+        {
             connection.Open();
-            string infoDB = "SELECT id, name, year, raiting FROM compani";
-
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter(infoDB,connection);
-            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter2);
-
-            DataTable dataTable = new DataTable();
-            //dataTable.Load(dataGridCompani.DataSource);
-            
-            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
-
-
-            int coulmneeded = 0;
 
             MySqlCommand command = new MySqlCommand("INSERT INTO `compani` (`name`, `year`, `raiting`) VALUE (@n, @year, @raiting);", connection);
             command.Parameters.Add("@year", MySqlDbType.VarChar).Value = textBox2.Text;
@@ -68,51 +59,55 @@ namespace ChoiseFlight
             command.ExecuteNonQuery(); 
 
             connection.Close();
+
+            GetCompaniDB();
         }
 
         private void buttonLoadReis_Click(object sender, EventArgs e)
         {
-            connection = new MySqlConnection(server);
-            connection.Open();
-            dataGridReis.AutoGenerateColumns=false;
-            NumReis.DataPropertyName = "№";
-            SityFly.DataPropertyName = "SityFly";
-            SityFall.DataPropertyName = "SityFall";
-            TimeFly.DataPropertyName = "TimeFly";
-            TimeFall.DataPropertyName = "TimeFall";
-            string infoDB = "SELECT * FROM reis";
-            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
-            dataTable = new DataTable();
-            adpt.Fill(dataTable);
-            dataGridReis.DataSource = dataTable;
-            connection.Close();
+            GetReisDB();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCompaniDelete_Click(object sender, EventArgs e)
         {
-            iDelete();//DELETE FROM `compani` WHERE `compani`.`id` = 2
+            iDeleteC();
         }
 
-        private void iDelete()
+        private void iDeleteC()
         {
             connection.Open();
             MySqlCommand command = new MySqlCommand("DELETE FROM `compani` WHERE `compani`.`id` = @id", connection);
-            command.Parameters.Add("@id", MySqlDbType.Int16).Value = GetId();
+            command.Parameters.Add("@id", MySqlDbType.Int16).Value = GetIdC();
             command.ExecuteNonQuery();
             connection.Close();
 
             dataGridCompani.Rows.RemoveAt(dataGridCompani.SelectedRows[0].Index);
-
         }
 
-        private object GetId()
+        private object GetIdC()
         {
             return dataGridCompani.SelectedRows[0].Cells[0].Value;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            iDelete();
+            iDeleteR();
+        }
+
+        private void iDeleteR()
+        {
+            connection.Open();
+            MySqlCommand command = new MySqlCommand("DELETE FROM `reis` WHERE `reis`.`id` = @id", connection);
+            command.Parameters.Add("@id", MySqlDbType.Int16).Value = GetIdR();
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            dataGridReis.Rows.RemoveAt(dataGridReis.SelectedRows[0].Index);
+        }
+
+        private object GetIdR()
+        {
+            return dataGridReis.SelectedRows[0].Cells[0].Value;
         }
 
         private void iExit()
@@ -125,31 +120,6 @@ namespace ChoiseFlight
             iExit();
         }
 
-        public static DataTable GetDTfromDGV(DataGridView dgv, int rowcount = 1, int colcount = 3)//row count used when rowpost paint used, default is zero...colcount is the coulmns needed to convert , default is 0
-        {
-            DataTable dt = new DataTable();
-            int coulmneeded = dgv.Columns.Count - (dgv.Columns.Count - colcount);
-
-            for (int ik = 0; ik < coulmneeded; ik++)
-            {
-                dt.Columns.Add(dgv.Columns[ik].HeaderText);
-            }
-
-
-
-            for (int i = 0; i < dgv.Rows.Count - rowcount; i++)
-            {
-                var dr = dt.NewRow();
-                for (int j = 0; j < coulmneeded; j++)
-                {
-                    dr[j] = dgv.Rows[i].Cells[j].Value;
-                }
-                dt.Rows.Add(dr);
-            }
-
-
-            return dt;
-        }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
@@ -158,19 +128,43 @@ namespace ChoiseFlight
             mainMenu.Show();
         }
 
-        private void dataGridReis_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void buttonSaveReis_Click(object sender, EventArgs e)
         {
+            connection.Open();
 
+            MySqlCommand command = new MySqlCommand("INSERT INTO `reis` (`№`, `SityFly`, `SityFall`, `TimeFly`, `TimeFall`) VALUE (@num, @Sfly, @Sfall, @Tfly, @TFall);", connection);
+           
+            command.Parameters.Add("@num", MySqlDbType.VarChar).Value = textBoxNumR.Text;
+            command.Parameters.Add("@Sfly", MySqlDbType.VarChar).Value = textBoxSFly.Text;
+            command.Parameters.Add("@Sfall", MySqlDbType.VarChar).Value = textBoxSfall.Text;
+            command.Parameters.Add("@Tfly", MySqlDbType.VarChar).Value = textBoxTfly.Text;
+            command.Parameters.Add("@Tfall", MySqlDbType.VarChar).Value = textBoxTfall.Text;
+           
+            command.ExecuteNonQuery();
+
+            connection.Close();
+
+            GetReisDB();
         }
 
-        private void dataGridCompani_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void GetReisDB()
         {
-
+            connection = new MySqlConnection(server);
+            connection.Open();
+            dataGridReis.AutoGenerateColumns = false;
+            NumReis.DataPropertyName = "№";
+            SityFly.DataPropertyName = "SityFly";
+            SityFall.DataPropertyName = "SityFall";
+            TimeFly.DataPropertyName = "TimeFly";
+            TimeFall.DataPropertyName = "TimeFall";
+            IDReis.DataPropertyName = "ID";
+            string infoDB = "SELECT * FROM reis";
+            MySqlDataAdapter adpt = new MySqlDataAdapter(infoDB, connection);
+            dataTable = new DataTable();
+            adpt.Fill(dataTable);
+            dataGridReis.DataSource = dataTable;
+            connection.Close();
         }
     }
 }
