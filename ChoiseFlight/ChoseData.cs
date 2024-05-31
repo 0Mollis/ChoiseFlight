@@ -83,8 +83,14 @@ namespace ChoiseFlight
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Buffer.CompaniTxtBox = textBoxCompani2.Text;
-            Buffer.ReisTxtBox = textBoxReis2.Text;
+            if (textBoxCompani2.Text != "")
+            {
+                Buffer.CompaniTxtBox = textBoxCompani2.Text;
+            }
+            if (textBoxReis2.Text != "") 
+            {
+                Buffer.ReisTxtBox = textBoxReis2.Text;                
+            }
             MessageBox.Show("Сохранено","", MessageBoxButtons.OK);
         }
 

@@ -15,6 +15,8 @@ namespace ChoiseFlight
         public TicketsOrder()
         {
             InitializeComponent();
+
+            Check();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -44,25 +46,42 @@ namespace ChoiseFlight
 
         public void Check()
         {
-            if (Buffer.CompaniTxtBox == "Выберите авиакомпанию" && Buffer.ReisTxtBox == "Выберите номер рейса")
+            if (Buffer.CompaniTxtBox == "Выберите авиакомпанию")
             {
-                MessageBox.Show("Вы не выбрали авиакомпанию и номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Buffer.CheckString = false;
+                if (Buffer.CompaniTxtBox == "Выберите авиакомпанию" && Buffer.ReisTxtBox == "Выберите номер рейса")
+                {
+                    MessageBox.Show("Вы не выбрали авиакомпанию и номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Buffer.CheckString = false;
+                }
+
+                else MessageBox.Show("Вы не выбрали авиакомпанию", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            //else if (Buffer.CheckString == true && Buffer.CompaniTxtBox == "Выберите авиакомпанию")
+
+            else if (Buffer.ReisTxtBox == "Выберите номер рейса")
+            {
+                MessageBox.Show("Вы не выбрали номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+            //if (Buffer.CompaniTxtBox == "Выберите авиакомпанию" && Buffer.ReisTxtBox == "Выберите номер рейса")
+            //{
+            //    MessageBox.Show("Вы не выбрали авиакомпанию и номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    Buffer.CheckString = false;
+            //}
+            //else if (Buffer.CompaniTxtBox == "Выберите авиакомпанию")
             //{
             //    MessageBox.Show("Вы не выбрали авиакомпанию", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
-            //else if (Buffer.CheckString == true && Buffer.ReisTxtBox == "Выберите номер рейса")
+            //else if (Buffer.ReisTxtBox == "Выберите номер рейса")
             //{
             //    MessageBox.Show("Вы не выбрали номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //} не проверяет эти if, ничего ни делает
+            //}
+            //else;
         }
 
         private void TicketsOrder_Load(object sender, EventArgs e)
         {
             GetInfo();
-            Check();
             buttonFalse();
             progressHide();
         }
