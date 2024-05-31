@@ -96,7 +96,7 @@ namespace ChoiseFlight
             if (dateTimePickerFly.Value>dateTimePickerFall.Value)
             {
                 MessageBox.Show("Ошибка дата посадки не может быть раньше даты вылета", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dateTimePickerFall.Value = DateTime.Now;
+                dateTimePickerFall.Value = dateTimePickerFly.Value;
             }
 
             CheckPrice();
@@ -172,6 +172,10 @@ namespace ChoiseFlight
                 progressBar1.Visible=false;
                 buttonPay.Enabled=false;
                 buttonOrder.Enabled=true;
+                dateTimePickerFly.Value = DateTime.Now;
+                dateTimePickerFall.Value = DateTime.Now;
+                textBoxCompani2.Text = "";
+                textBoxReis2.Text = "";
             }
 
             progress++;

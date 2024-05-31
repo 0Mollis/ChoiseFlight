@@ -167,6 +167,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(163, 24);
             this.textBox2.TabIndex = 6;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
@@ -208,6 +209,8 @@
             // 
             // dataGridCompani
             // 
+            this.dataGridCompani.AllowUserToAddRows = false;
+            this.dataGridCompani.AllowUserToDeleteRows = false;
             this.dataGridCompani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCompani.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDcol,
@@ -217,6 +220,7 @@
             this.dataGridCompani.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridCompani.Location = new System.Drawing.Point(3, 3);
             this.dataGridCompani.Name = "dataGridCompani";
+            this.dataGridCompani.ReadOnly = true;
             this.dataGridCompani.RowHeadersWidth = 51;
             this.dataGridCompani.RowTemplate.Height = 24;
             this.dataGridCompani.Size = new System.Drawing.Size(988, 425);
@@ -227,6 +231,7 @@
             this.IDcol.HeaderText = "id";
             this.IDcol.MinimumWidth = 6;
             this.IDcol.Name = "IDcol";
+            this.IDcol.ReadOnly = true;
             this.IDcol.Width = 125;
             // 
             // NameCompani
@@ -234,6 +239,7 @@
             this.NameCompani.HeaderText = "Название";
             this.NameCompani.MinimumWidth = 6;
             this.NameCompani.Name = "NameCompani";
+            this.NameCompani.ReadOnly = true;
             this.NameCompani.Width = 150;
             // 
             // YearCompani
@@ -241,6 +247,7 @@
             this.YearCompani.HeaderText = "Год основания";
             this.YearCompani.MinimumWidth = 6;
             this.YearCompani.Name = "YearCompani";
+            this.YearCompani.ReadOnly = true;
             this.YearCompani.Width = 150;
             // 
             // ReitingCompani
@@ -248,6 +255,7 @@
             this.ReitingCompani.HeaderText = "Рейтинг компании";
             this.ReitingCompani.MinimumWidth = 6;
             this.ReitingCompani.Name = "ReitingCompani";
+            this.ReitingCompani.ReadOnly = true;
             this.ReitingCompani.Width = 160;
             // 
             // reis
@@ -391,6 +399,8 @@
             // 
             // dataGridReis
             // 
+            this.dataGridReis.AllowUserToAddRows = false;
+            this.dataGridReis.AllowUserToDeleteRows = false;
             this.dataGridReis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridReis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDReis,
@@ -402,6 +412,7 @@
             this.dataGridReis.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridReis.Location = new System.Drawing.Point(3, 3);
             this.dataGridReis.Name = "dataGridReis";
+            this.dataGridReis.ReadOnly = true;
             this.dataGridReis.RowHeadersWidth = 51;
             this.dataGridReis.RowTemplate.Height = 24;
             this.dataGridReis.Size = new System.Drawing.Size(988, 425);
