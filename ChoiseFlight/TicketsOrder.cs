@@ -95,7 +95,7 @@ namespace ChoiseFlight
         {
             if (dateTimePickerFly.Value>dateTimePickerFall.Value)
             {
-                MessageBox.Show("Ошибка дата посадки не может быть раньше даты вылета", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ошибка дата прилёта не может быть раньше даты вылета", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dateTimePickerFall.Value = dateTimePickerFly.Value;
             }
 
@@ -166,22 +166,25 @@ namespace ChoiseFlight
         private void timer1_Tick(object sender, EventArgs e)
         {
             //label7.Text = mseconds--.ToString();
+            mseconds--;
+            progress++;
+            progressBar1.Value = progress;            
+            
             if (mseconds <= 0)
             {
+                
                 timer1.Stop();
+                MessageBox.Show("Вы не успели оплатить", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 progressBar1.Visible=false;
                 buttonPay.Enabled=false;
                 buttonOrder.Enabled=true;
                 dateTimePickerFly.Value = DateTime.Now;
                 dateTimePickerFall.Value = DateTime.Now;
-                textBoxCompani2.Text = "";
-                textBoxReis2.Text = "";
+                Buffer.CompaniTxtBox = "Выберите авиакомпанию";
+                Buffer.ReisTxtBox = "Выберите номер рейса";
+                textBoxCompani2.Text = "Выберите авиакомпанию";
+                textBoxReis2.Text = "Выберите номер рейса";
             }
-
-            progress++;
-            progressBar1.Value = progress;
-
-
         }
 
         private void buttonPay_Click(object sender, EventArgs e)
