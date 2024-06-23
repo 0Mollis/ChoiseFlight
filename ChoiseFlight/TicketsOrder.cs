@@ -51,7 +51,6 @@ namespace ChoiseFlight
                 if (Buffer.CompaniTxtBox == "Выберите авиакомпанию" && Buffer.ReisTxtBox == "Выберите номер рейса")
                 {
                     MessageBox.Show("Вы не выбрали авиакомпанию и номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Buffer.CheckString = false;
                 }
 
                 else MessageBox.Show("Вы не выбрали авиакомпанию", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -61,22 +60,6 @@ namespace ChoiseFlight
             {
                 MessageBox.Show("Вы не выбрали номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-            //if (Buffer.CompaniTxtBox == "Выберите авиакомпанию" && Buffer.ReisTxtBox == "Выберите номер рейса")
-            //{
-            //    MessageBox.Show("Вы не выбрали авиакомпанию и номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    Buffer.CheckString = false;
-            //}
-            //else if (Buffer.CompaniTxtBox == "Выберите авиакомпанию")
-            //{
-            //    MessageBox.Show("Вы не выбрали авиакомпанию", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else if (Buffer.ReisTxtBox == "Выберите номер рейса")
-            //{
-            //    MessageBox.Show("Вы не выбрали номер рейса", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else;
         }
 
         private void TicketsOrder_Load(object sender, EventArgs e)
@@ -110,38 +93,41 @@ namespace ChoiseFlight
 
         public void CheckPrice()
         {
-            int price = 1000;
+            if (dateTimePickerFly.Value > dateTimePickerFall.Value)
+            {
+                dateTimePickerFall.Value = dateTimePickerFly.Value;
+            }
+
+            int price = Buffer.BChost;
+            bool checkweek1 = true;
+            bool checkweek2 = true;
 
             if (dateTimePickerFall.Value.DayOfWeek == DayOfWeek.Saturday)
             {
-                if (price < 1100)
-                {
-                    price += 100;
-                }
-
+                price = (price / 100) * 110;
+                checkweek1 = false;
+                checkweek2 = false;
             }
             if (dateTimePickerFall.Value.DayOfWeek == DayOfWeek.Sunday)
             {
-                if (price < 1100)
-                {
-                    price += 100;
+                if (checkweek1) 
+                { 
+                    price = (price / 100) * 110;
+                    checkweek1 = false;
+                    checkweek2 = false;
                 }
-
             }
-            if (dateTimePickerFly.Value.DayOfWeek == DayOfWeek.Saturday)
+            if (dateTimePickerFly.Value.DayOfWeek == DayOfWeek.Saturday && checkweek2)
             {
-                if (price < 1100)
-                {
-                    price += 100;
-                }
-
+                price = (price / 100) * 110;
+                checkweek1 = false;
+                checkweek2 = false;
             }
-            if (dateTimePickerFly.Value.DayOfWeek == DayOfWeek.Sunday)
+            if (dateTimePickerFly.Value.DayOfWeek == DayOfWeek.Sunday && checkweek2)
             {
-                if (price < 1100)
-                {
-                    price += 100;
-                }
+                price = (price / 100) * 110;
+                checkweek1 = false;
+                checkweek2 = false;
             }
             Chost.Text = price.ToString();
         }

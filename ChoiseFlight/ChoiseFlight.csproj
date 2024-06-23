@@ -104,6 +104,12 @@
     <Compile Include="AddDataForm.Designer.cs">
       <DependentUpon>AddDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Booking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking.Designer.cs">
+      <DependentUpon>Booking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Buffer.cs" />
     <Compile Include="ChoseData.cs">
       <SubType>Form</SubType>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="AddDataForm.resx">
       <DependentUpon>AddDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking.resx">
+      <DependentUpon>Booking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChoseData.resx">
       <DependentUpon>ChoseData.cs</DependentUpon>

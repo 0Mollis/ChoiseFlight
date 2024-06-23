@@ -83,15 +83,33 @@ namespace ChoiseFlight
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            bool check1 = false;
+            bool check2 = false;
             if (textBoxCompani2.Text != "")
             {
                 Buffer.CompaniTxtBox = textBoxCompani2.Text;
+                check1 = true;
+            }
+            else
+            {
+                MessageBox.Show("Выберите компанию");
             }
             if (textBoxReis2.Text != "") 
             {
-                Buffer.ReisTxtBox = textBoxReis2.Text;                
+                Buffer.ReisTxtBox = textBoxReis2.Text;  
+                check2 = true;
             }
-            MessageBox.Show("Сохранено","", MessageBoxButtons.OK);
+            else
+            {
+                MessageBox.Show("Выберите рейс");
+            }
+            if (check1 && check2)
+            {
+                Booking booking = new Booking();
+                booking.Show();
+                this.Close();
+            }
+
         }
 
     }

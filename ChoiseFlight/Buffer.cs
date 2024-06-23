@@ -12,7 +12,12 @@ namespace ChoiseFlight
 
         public static string ReisTxtBox = "Выберите номер рейса";
 
-        public static bool CheckString = true;
+        public static int BChost = 0;
 
+        public static List<string> bookings = new List<string>();
+
+        public static int Beco = 156;
+
+        public static int Bbusiness = 8;
     }
 }
