@@ -1,9 +1,14 @@
-﻿using Mysqlx.Crud;
+﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.Crmf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -21,8 +26,13 @@ namespace ChoiseFlight
             InitializeComponent();
             Places();
             PriceF();
+            connection = new MySqlConnection(server);
             BookingCheck();
         }
+
+        public string server = "Server=localhost;Database=aeroport;Uid=root;pwd=root;charset=utf8;";
+        public MySqlConnection connection;
+        public MySqlCommand command;
 
         private Control FindControlByName(Control container, string name)
         {
@@ -42,14 +52,56 @@ namespace ChoiseFlight
             return null;
         }
 
+        public int A()
+        {
+            MySqlCommand myCommand = new MySqlCommand("SELECT count(id) FROM `bookingbd`", connection);
+
+            connection.Open();
+
+            string count = (string)myCommand.ExecuteScalar().ToString();
+
+            connection.Close();
+
+            return Convert.ToInt32(count);
+        }
 
         public void BookingCheck()
         {
-            if (Buffer.bookings.Count != 0)
-            {
-                for (int i = 0; i < Buffer.bookings.Count; i++)
+            int count = A();
+            for (int i = 1; i <= count; i++)
+            {                  
+                connection = new MySqlConnection(server);
+                string bookingDB = $"SELECT `Book1`, `Book2`, `Book3`, `Book4`, `Book5`, `Beco`, `Bbusiness` FROM `bookingbd` WHERE id = {i}";
+                command = new MySqlCommand(bookingDB, connection);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    Control foundButton = FindControlByName(this, $"{Buffer.bookings[i]}");
+                    for (int j = 0; j < 5; j++) 
+                    {                     
+                        string result = reader.GetString(j);
+                        Buffer.bookingsDB.Add(result);
+                        if(j == 0)
+                        {
+                            string DBBeco = reader.GetString(5);
+                            string DBBbusines = reader.GetString(6);   
+                            Buffer.Beco += Convert.ToInt32(DBBeco);
+                            Buffer.Bbusiness += Convert.ToInt32(DBBbusines);  
+                        }                      
+                    }
+                }
+
+                reader.Close();
+
+            }
+            connection.Close();
+
+            if (Buffer.bookingsDB.Count != 0)
+            {
+                for (int i = 0; i < Buffer.bookingsDB.Count; i++)
+                {
+                    Control foundButton = FindControlByName(this, $"{Buffer.bookingsDB[i]}");
                     if (foundButton != null)
                     {
                         foundButton.BackColor = Color.Gray;
@@ -57,27 +109,43 @@ namespace ChoiseFlight
                     }
                 }
             }
+
+            int be = Beco - Buffer.Beco;
+            int bb = Bbusiness - Buffer.Bbusiness;
+
+            labelEco.Text = be.ToString();
+            labelBusiness.Text = bb.ToString();
         }
     
         private void button2_Click(object sender, EventArgs e)
         {
             int counts = 0;
-            if (PChose1.Text != "A00"){ Buffer.bookings.Add(PChose1.Text); counts++; }
-            if (PChose2.Text != "A00"){ Buffer.bookings.Add(PChose2.Text); counts++; }
-            if (PChose3.Text != "A00"){ Buffer.bookings.Add(PChose3.Text); counts++; }
-            if (PChose4.Text != "A00"){ Buffer.bookings.Add(PChose4.Text); counts++; }
-            if (PChose5.Text != "A00"){ Buffer.bookings.Add(PChose5.Text); counts++; }
+            if (Buffer.pay)
+            {
+                Buffer.bookings.Add(PChose1.Text); counts++;
+                Buffer.bookings.Add(PChose2.Text); counts++; 
+                Buffer.bookings.Add(PChose3.Text); counts++; 
+                Buffer.bookings.Add(PChose4.Text); counts++; 
+                Buffer.bookings.Add(PChose5.Text); counts++; 
+                Buffer.pay = false;
+                Buffer.Beco = 0;
+                Buffer.Bbusiness = 0;
+            }
+
             Buffer.BChost = Convert.ToInt32(Price.Text);
             if(counts != 0)
             {
-                Buffer.Beco = Beco;
-                Buffer.Bbusiness = Bbusiness;
+                Buffer.inBDbe = inBDbe;
+                Buffer.inBDbb = inBDbb;
 
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
                 this.Close();
             }
         }
+
+        public int inBDbe = 0;
+        public int inBDbb = 0;
 
         private void iExit()
         {
@@ -94,9 +162,6 @@ namespace ChoiseFlight
         public void Places()
         {
             Nreis.Text = Buffer.ReisTxtBox.ToString();
-
-            labelEco.Text = Buffer.Beco.ToString();
-            labelBusiness.Text = Buffer.Bbusiness.ToString();
         }
 
         public void ChoseInfoAdd(Button btn)
@@ -245,9 +310,9 @@ namespace ChoiseFlight
             Price.Text = Chost.ToString(); 
 
         }
-
-        public int Beco = Buffer.Beco;
-        public int Bbusiness = Buffer.Bbusiness;
+//
+        public int Beco = 156;
+        public int Bbusiness = 8;
 
         public void Chose(Button btn)
         {
@@ -255,21 +320,21 @@ namespace ChoiseFlight
             {
                 btn.BackColor = Color.Gold;
                 MaxChose++;
-                Beco--;
+                inBDbe++;
                 ChoseInfoAdd(btn);
             }
             else if (btn.BackColor == Color.FromArgb(0, 192, 0) && MaxChose < 5)
             {
                 btn.BackColor = Color.FromArgb(255, 220, 0);
                 MaxChose++;
-                Bbusiness--;
+                inBDbb++;
                 ChoseInfoAdd(btn);
             }
             else if (btn.BackColor == Color.FromArgb(255, 220, 0))
             {
                 btn.BackColor = Color.FromArgb(0, 192, 0);
                 MaxChose--;
-                Bbusiness++;
+                inBDbb--;
                 ChoseInfoDel(btn);
                 PriceF();
             }
@@ -277,7 +342,7 @@ namespace ChoiseFlight
             {
                 btn.BackColor = Color.Lime;
                 MaxChose--;
-                Beco++;
+                inBDbe--;
                 ChoseInfoDel(btn);
                 PriceF();
             }
@@ -1105,6 +1170,8 @@ namespace ChoiseFlight
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            Buffer.Beco = 0;
+            Buffer.Bbusiness = 0;
             this.Close();
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();

@@ -82,7 +82,7 @@ namespace ChoiseFlight
             iExit();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button2_Click_2(object sender, EventArgs e)
         {
             Booking booking = new Booking();
             booking.Show();

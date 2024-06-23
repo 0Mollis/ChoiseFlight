@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace ChoiseFlight
         public TicketsOrder()
         {
             InitializeComponent();
-
+            connection = new MySqlConnection(server);
             Check();
         }
 
@@ -161,6 +162,8 @@ namespace ChoiseFlight
                 
                 timer1.Stop();
                 MessageBox.Show("Вы не успели оплатить", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Buffer.pay = true;
+                Buffer.bookings.Clear();
                 progressBar1.Visible=false;
                 buttonPay.Enabled=false;
                 buttonOrder.Enabled=true;
@@ -173,12 +176,40 @@ namespace ChoiseFlight
             }
         }
 
+        public string server = "Server=localhost;Database=aeroport;Uid=root;pwd=root;charset=utf8;";
+        public MySqlConnection connection;
+        public MySqlCommand command;
+
         private void buttonPay_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MainMenu mainMenu = new MainMenu(); 
-            mainMenu.Show();
-            MessageBox.Show("Оплачено :)", "", MessageBoxButtons.OK);
+            if (Buffer.pay == false)
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand("INSERT INTO `bookingBD` (`Book1`, `Book2`, `Book3`, `Book4`, `Book5`, `Beco`, `Bbusiness`) VALUE (@b1, @b2, @b3, @b4, @b5, @be, @bb);", connection);
+
+                command.Parameters.Add("@b1", MySqlDbType.VarChar).Value = Buffer.bookings[0];
+                command.Parameters.Add("@b2", MySqlDbType.VarChar).Value = Buffer.bookings[1];
+                command.Parameters.Add("@b3", MySqlDbType.VarChar).Value = Buffer.bookings[2];
+                command.Parameters.Add("@b4", MySqlDbType.VarChar).Value = Buffer.bookings[3];
+                command.Parameters.Add("@b5", MySqlDbType.VarChar).Value = Buffer.bookings[4];
+                command.Parameters.Add("@be", MySqlDbType.VarChar).Value = Buffer.inBDbe.ToString();
+                command.Parameters.Add("@bb", MySqlDbType.VarChar).Value = Buffer.inBDbb.ToString();
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+
+                Buffer.bookings.Clear();
+
+                Buffer.pay = true;
+
+                this.Close();
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
+                MessageBox.Show("Оплачено :)", "", MessageBoxButtons.OK);
+
+            }
         }
     }
 }

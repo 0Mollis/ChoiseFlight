@@ -14,10 +14,18 @@ namespace ChoiseFlight
 
         public static int BChost = 0;
 
+        public static bool pay = true;
+
         public static List<string> bookings = new List<string>();
 
-        public static int Beco = 156;
+        public static List<string> bookingsDB = new List<string>();
 
-        public static int Bbusiness = 8;
+        public static int inBDbe = 0;
+
+        public static int inBDbb = 0;
+
+        public static int Beco = 0;
+
+        public static int Bbusiness = 0;
     }
 }
