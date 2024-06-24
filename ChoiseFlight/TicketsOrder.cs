@@ -152,7 +152,6 @@ namespace ChoiseFlight
         
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //label7.Text = mseconds--.ToString();
             mseconds--;
             progress++;
             progressBar1.Value = progress;            
@@ -211,5 +210,6 @@ namespace ChoiseFlight
 
             }
         }
+
     }
 }
