@@ -203,6 +203,9 @@ namespace ChoiseFlight
 
                 Buffer.pay = true;
 
+                Buffer.inBDbe = 0;
+                Buffer.inBDbb = 0;
+
                 this.Close();
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
